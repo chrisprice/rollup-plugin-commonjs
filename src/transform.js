@@ -237,7 +237,7 @@ export default function transformCommonjs ( code, id, isEntry, ignoreGlobal, ign
 
 			if ( parent.type === 'ExpressionStatement' ) {
 				// is a bare import, e.g. `require('foo');`
-				magicString.remove( parent.start, parent.end );
+				magicString.overwrite( parent.start, parent.end, 'undefined' );
 			} else {
 				r.importsDefault = true;
 				magicString.overwrite( node.start, node.end, r.name );
